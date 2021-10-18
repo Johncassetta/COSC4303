@@ -25,7 +25,7 @@ Min WP Version: 2.1
  * This file has all the stuff that is really needed to initialize the plugin.
  */
 define("POST_NOTIFICATION_PLUGIN_DIR", dirname(plugin_basename(__FILE__)));
-define("POST_NOTIFICATION_PATH_REL", PLUGINDIR . '/' . POST_NOTIFICATION_PLUGIN_DIR);
+//define("POST_NOTIFICATION_PATH_REL", PLUGINDIR . '/' . POST_NOTIFICATION_PLUGIN_DIR);
 if ( defined("WP_PLUGIN_DIR") ) {
 	# Wordpress 2.6 and newer allows more flexible plugin location
 	//Todo: Check whether the _REL is really needed.

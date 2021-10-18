@@ -264,14 +264,14 @@ class Walker_post_notification extends Walker {
 	var $id_list = array(0);
 	var $last_id = 0;
 	
-	function start_lvl(&$output, $depth, $args) {
+	function start_lvl(&$output, $depth = 0, $args = array()) {
 		$indent = str_repeat("\t", $depth);
 		$output .= "$indent<ul class='children'>\n";
 		$this->id_list[] = $this->last_id;
 		return $output;
 	}
 
-	function end_lvl(&$output, $depth, $args) {
+	function end_lvl(&$output, $depth = 0, $args = array()) {
 		$indent = str_repeat("\t", $depth);
 		$output .= "$indent</ul>\n";
 		array_pop($this->id_list);
@@ -280,7 +280,7 @@ class Walker_post_notification extends Walker {
 	
 	
 	
-	function start_el(&$output, $category, $depth, $args) {
+	function start_el(&$output, $category, $depth = 0, $args = array(), $current_object_id = 0) {
 		$output .= str_repeat("\t", $depth * 3);
 		$output .= "<li>";
 				
