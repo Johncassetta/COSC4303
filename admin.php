@@ -13,7 +13,8 @@ function post_notification_admin_page_load(){
 	//$editing = true;
 }
 
-function post_notification_admin_page(){  
+function post_notification_admin_page(){
+	global $wpdb;
 	//Ok, now we'll need I18N
 	load_plugin_textdomain('post_notification', POST_NOTIFICATION_PATH_REL);
 

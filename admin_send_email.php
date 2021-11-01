@@ -46,21 +46,21 @@ if (!isset($emailList)) {
 	/*************************************************/
 		
 	$sql_email_list = "SELECT * FROM " . $dbtable_praefix . "email_list WHERE gets_mail = 1";	
-	$result_email_list = mysql_query($sql_email_list);
+	$result_email_list = mysqli_query($wpdb, $sql_email_list);
 	
 	if (!$result_email_list) {
-		echo '<p class="error">Konnte die Anfrage ($sql_email_list) an die DB nicht erfolgreich laufen lassen: ' . mysql_error() . '</p>';
+		echo '<p class="error">Konnte die Anfrage ($sql_email_list) an die DB nicht erfolgreich laufen lassen: ' . mysqli_error($wpdb) . '</p>';
 		echo '</div>';
 		exit;
 	}
 	
-	if (mysql_num_rows($result_email_list) == 0) {
+	if (mysqli_num_rows($result_email_list) == 0) {
 		echo '<p class="error">Keine Adressen gefunden !</p>';
 		echo '</div>';
 		exit;
 	}
 	$number = 0;
-	while ($row = mysql_fetch_assoc($result_email_list)) {
+	while ($row = mysqli_fetch_assoc($result_email_list)) {
 		$email_addr = $row['email_addr'];
    
    		$site_name = str_replace(array(utf8_encode('Ä'), utf8_encode('ä'), utf8_encode('Ö'), utf8_encode('ö'),utf8_encode('Ü'), utf8_encode('ü'), utf8_encode('ß')), array('Ä', 'ä', 'Ö', 'ö', 'Ü', 'ü', 'ß'), $site_name);
@@ -92,8 +92,8 @@ if (!isset($emailList)) {
 		$number++;
 	}
 	
-	mysql_free_result($result_config);  // Free the memory
-	mysql_free_result($result_email_list);  // Free the memory
+	mysqli_free_result($result_config);  // Free the memory
+	mysqli_free_result($result_email_list);  // Free the memory
 	
 	if ($number == "1") {
 		echo '<p class="updated"><br />Die eMail wurde an einen User versandt.<br /></p>';
