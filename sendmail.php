@@ -144,7 +144,8 @@ function post_notification_create_email($id, $template = ''){
 	//Convert from HTML to text.
 	if (!$html_email && isset($post_content)){
 		require_once(POST_NOTIFICATION_PATH  . 'class.html2text.php');
-		$h2t =& new html2text($post_content);
+//		$h2t =& new html2text($post_content);
+		$h2t = new html2text($post_content);
 		$post_content = $h2t->get_text();
 	}
 	
